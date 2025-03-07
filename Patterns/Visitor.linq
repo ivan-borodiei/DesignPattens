@@ -22,6 +22,8 @@ interface IBuilding
 
 class House : IBuilding
 {
+	public string Name { get; set; } = "My House";
+	
 	public void Accept(IVisitor visitor)
 	{
 		visitor.VisitHouse(this);
@@ -30,6 +32,8 @@ class House : IBuilding
 
 class Office : IBuilding
 {
+	public string Name { get; set; } = "My Office";
+	
 	public void Accept(IVisitor visitor)
 	{
 		visitor.VisitOffice(this);
@@ -47,12 +51,12 @@ class ElectricitySystemVisitor : IVisitor
 {
 	public void VisitHouse(House house)
 	{
-		Console.WriteLine("House has been checked by electric!");
+		Console.WriteLine($"House {house.Name} has been checked by electric!");
 	}
 
 	public void VisitOffice(Office office)
 	{
-		Console.WriteLine("Office has been checked by electric!");
+		Console.WriteLine($"Office: {office.Name} has been checked by electric!");
 	}
 }
 
@@ -60,11 +64,11 @@ class PlumperSystemVisitor : IVisitor
 {
 	public void VisitHouse(House house)
 	{
-		Console.WriteLine("House has been checked by plumper!");
+		Console.WriteLine($"House {house.Name} has been checked by plumper!");
 	}
 
 	public void VisitOffice(Office office)
 	{
-		Console.WriteLine("Office has been checked by plumper!");
+		Console.WriteLine($"Office {office.Name} has been checked by plumper!");
 	}
 }
